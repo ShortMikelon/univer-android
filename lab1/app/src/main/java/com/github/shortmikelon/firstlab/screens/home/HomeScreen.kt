@@ -155,7 +155,7 @@ private fun HomeScreenTopAppBar(
     TopAppBar(
         title = {
             Text(
-                text = "Daniel",
+                text = "Nos",
                 color = MaterialTheme.colorScheme.onPrimary,
             )
         },

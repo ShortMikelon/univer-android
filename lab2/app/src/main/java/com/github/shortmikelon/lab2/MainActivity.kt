@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             Lab2Theme {
                 Scaffold(
-                    topBar = { TopBar("lab 2") },
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     App(modifier = Modifier.padding(innerPadding))
@@ -50,66 +49,58 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-private fun TopBar(
-    title: String = ""
-) {
-    TopAppBar(
-        title = { Text(text = title, color = MaterialTheme.colorScheme.onPrimary) },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-        )
-    )
-}
 
 @Composable
 private fun App(
     modifier: Modifier = Modifier
 ) {
-    var selected by remember { mutableStateOf(1) }
+    var state1 by remember { mutableStateOf(Arrangement.Start) }
+    var state2 by remember { mutableStateOf(Arrangement.Start) }
+    var state3 by remember { mutableStateOf(Arrangement.Start) }
 
     Column(
         modifier = modifier.fillMaxSize()
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = state1
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(getColor(selected = selected, id = 1)),
-                onClick = { selected = 1 }
+                onClick = {
+                    state1 = if (state1 == Arrangement.Start) Arrangement.Start
+                    else Arrangement.Start
+                }
             ) {
-                Text(text = "start")
+                Text(text = "1")
             }
         }
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start
+            horizontalArrangement = state2
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(getColor(selected = selected, id = 2)),
-                onClick = { selected = 2 }
+                onClick = {
+                    state2 = if (state2 == Arrangement.Start) Arrangement.Cen\
+                    else Arrangement.Start
+                }
             ) {
-                Text(text = "center")
+                Text(text = "2")
             }
         }
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = state3
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(getColor(selected = selected, id = 3)),
-                onClick = { selected = 3 }) {
-                Text(text = "end")
+                onClick = {
+                    state3 = if (state3 == Arrangement.Start) Arrangement.End
+                    else Arrangement.Start
+                }
+            ) {
+                Text(text = "3")
             }
         }
     }
-}
-
-@Composable
-private fun getColor(selected: Int, id: Int): Color {
-    if (selected == id) return MaterialTheme.colorScheme.primary
-    else return MaterialTheme.colorScheme.secondary
 }

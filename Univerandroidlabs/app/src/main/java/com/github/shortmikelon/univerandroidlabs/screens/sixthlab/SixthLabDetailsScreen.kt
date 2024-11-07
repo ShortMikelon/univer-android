@@ -1,6 +1,5 @@
 package com.github.shortmikelon.univerandroidlabs.screens.sixthlab
 
-import androidx.compose.foundation.content.MediaType.Companion.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,13 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.github.shortmikelon.univerandroidlabs.Dependencies
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 
 @Composable
 fun SixthLabDetailsScreen(
@@ -78,43 +71,3 @@ fun SixthLabDetailsScreen(
     }
 }
 
-class SixthLabDetailsViewModel : ViewModel() {
-    private val dao: SixthLabDao = Dependencies.getDao()
-
-    private val _state = MutableStateFlow(SixthLabEntity())
-    val state get() = _state.asStateFlow()
-
-    fun onChangeField(fieldIndex: Int, newValue: String) {
-        if (fieldIndex == 1) {
-            _state.value = _state.value.copy(name = newValue)
-        } else {
-            _state.value = _state.value.copy(email = newValue)
-        }
-    }
-
-    fun save() {
-        viewModelScope.launch {
-            val entity = SixthLabEntity(name = _state.value.name, email = _state.value.email)
-            val id = dao.insert(entity)
-            fetchRecord(id)
-        }
-    }
-
-    fun fetchRecord(id: Long) {
-        viewModelScope.launch {
-            _state.value = dao.findById(id)
-        }
-    }
-
-    fun update() {
-
-    }
-
-    fun delete() {
-        
-    }
-
-    private fun refresh() {
-
-    }
-}
