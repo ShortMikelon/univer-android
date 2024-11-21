@@ -56,9 +56,7 @@ fun SixthLabScreen(
             }
         }
 
-        Button(onClick = { navController.navigate("GRID_SCREEN") }) {
-            Text("NExt")
-        }
+        MyGrid()
     }
 }
 
@@ -84,7 +82,7 @@ private fun RecordCard(
 
             Column(modifier = Modifier.fillMaxHeight()) {
                 Text(text = record.name, fontSize = 20.sp)
-                Text(text = record.email, fontSize = 10.sp)
+                Text(text = record.uid, fontSize = 10.sp)
             }
         }
     }

@@ -17,13 +17,13 @@ class SixthLabDetailsViewModel : ViewModel() {
         if (fieldIndex == 1) {
             _state.value = _state.value.copy(name = newValue)
         } else {
-            _state.value = _state.value.copy(email = newValue)
+            _state.value = _state.value.copy(uid = newValue)
         }
     }
 
     fun save() {
         viewModelScope.launch {
-            val entity = SixthLabEntity(name = _state.value.name, email = _state.value.email)
+            val entity = SixthLabEntity(name = _state.value.name, uid = _state.value.uid)
             val id = dao.insert(entity)
             fetchRecord(id)
         }

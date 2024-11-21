@@ -38,7 +38,7 @@ fun SixthLabDetailsScreen(
     Column(verticalArrangement = Arrangement.spacedBy(20.dp), modifier = Modifier.fillMaxSize().padding(top = 25.dp)) {
         if (state.id != 0L) {
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
-                Text("ID: ${state.id}", fontSize = 30.sp)
+//                Text("ID: ${state.id}", fontSize = 30.sp)
 
                 Spacer(modifier = Modifier.width(30.dp))
 
@@ -58,9 +58,9 @@ fun SixthLabDetailsScreen(
         }
 
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
-            Text("Email", fontSize = 20.sp)
+            Text("ID", fontSize = 20.sp)
             Spacer(modifier = Modifier.height(30.dp))
-            TextField(value = state.email, onValueChange = { viewModel.onChangeField(2, it) })
+            TextField(value = state.uid, onValueChange = { viewModel.onChangeField(2, it) })
         }
 
         if (state.id == 0L) {

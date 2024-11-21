@@ -51,7 +51,13 @@ android {
 }
 
 dependencies {
-    implementation("io.github.thechance101:chart:Beta-0.0.5")
+    implementation(libs.chart)
+
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.video)
+    implementation(libs.androidx.camera.view)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -64,6 +70,13 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
+
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 

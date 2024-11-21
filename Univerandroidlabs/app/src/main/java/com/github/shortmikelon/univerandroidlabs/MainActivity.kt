@@ -25,7 +25,14 @@ import com.github.shortmikelon.univerandroidlabs.screens.lab5.FifthLabFirstTask
 import com.github.shortmikelon.univerandroidlabs.screens.lab5.FifthLabScreen
 import com.github.shortmikelon.univerandroidlabs.screens.lab5.InputActivityResult
 import com.github.shortmikelon.univerandroidlabs.screens.lab5.NameInput
+import com.github.shortmikelon.univerandroidlabs.screens.lab7.MetroListScreen
+import com.github.shortmikelon.univerandroidlabs.screens.lab7.SeventhLabHomeScreen
+import com.github.shortmikelon.univerandroidlabs.screens.lab7.SeventhLabNavigatorScreen
 import com.github.shortmikelon.univerandroidlabs.screens.rgr2.RGR2Screen
+import com.github.shortmikelon.univerandroidlabs.screens.rgr3.ThirdRGRAudioPlayerScreen
+import com.github.shortmikelon.univerandroidlabs.screens.rgr3.ThirdRGRHomeScreen
+import com.github.shortmikelon.univerandroidlabs.screens.rgr3.ThirdRGRShowPictureScreen
+import com.github.shortmikelon.univerandroidlabs.screens.rgr3.ThirdRGRVideoPlayerScreen
 import com.github.shortmikelon.univerandroidlabs.screens.sixthlab.MyGrid
 import com.github.shortmikelon.univerandroidlabs.screens.sixthlab.SixthLabDetailsScreen
 import com.github.shortmikelon.univerandroidlabs.screens.sixthlab.SixthLabScreen
@@ -119,6 +126,34 @@ private fun AppNavHost(
 
         composable("GRID_SCREEN") {
             MyGrid()
+        }
+
+        composable("SEVENTH_LAB_HOME_SCREEN") {
+            SeventhLabHomeScreen()
+        }
+
+        composable("SEVENTH_LAB_NAVIGATOR_SCREEN") {
+            SeventhLabNavigatorScreen(navController = navController)
+        }
+        
+        composable("SEVENTH_LAB_METRO_PICKER") {
+            MetroListScreen(navController = navController)
+        }
+
+        composable(AppDestination.THIRD_RGR_HOME.name) {
+            ThirdRGRHomeScreen(navController = navController)
+        }
+
+        composable(AppDestination.THIRD_RGR_AUDIO_PLAYER.name) {
+            ThirdRGRAudioPlayerScreen()
+        }
+
+        composable(AppDestination.THIRD_RGR_VIDEO_PLAYER.name) {
+            ThirdRGRVideoPlayerScreen()
+        }
+
+        composable(AppDestination.THIRD_RGR_PICTURES.name) {
+            ThirdRGRShowPictureScreen()
         }
     }
 }
